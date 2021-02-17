@@ -3,6 +3,7 @@ package uz.rdo.projects.listoftasks
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
+// second commit ;;;RDO
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
