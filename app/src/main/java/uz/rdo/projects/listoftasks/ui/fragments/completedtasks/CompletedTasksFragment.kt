@@ -1,4 +1,4 @@
-package uz.rdo.projects.listoftasks.ui.fragments.performedtasks
+package uz.rdo.projects.listoftasks.ui.fragments.completedtasks
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,15 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.hilt.android.AndroidEntryPoint
-import uz.rdo.projects.listoftasks.R
-import uz.rdo.projects.listoftasks.databinding.FragmentInProgressBinding
-import uz.rdo.projects.listoftasks.databinding.FragmentPerformedBinding
+import uz.rdo.projects.listoftasks.databinding.FragmentCompletedBinding
 
 @AndroidEntryPoint
-class PerformedFragment : Fragment() {
+class CompletedTasksFragment : Fragment() {
 
-    private var _binding: FragmentPerformedBinding? = null
-    private val binding: FragmentPerformedBinding
+    private var _binding: FragmentCompletedBinding? = null
+    private val binding: FragmentCompletedBinding
         get() = _binding ?: throw NullPointerException("view is not available")
 
 
@@ -22,7 +20,7 @@ class PerformedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPerformedBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentCompletedBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
