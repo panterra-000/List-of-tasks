@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dagger.hilt.android.AndroidEntryPoint
 import uz.rdo.projects.listoftasks.R
 import uz.rdo.projects.listoftasks.databinding.ActivityMainBinding
 import uz.rdo.projects.listoftasks.databinding.FragmentAllBinding
 
+@AndroidEntryPoint
 class AllFragment : Fragment() {
 
 

@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dagger.hilt.android.AndroidEntryPoint
 import uz.rdo.projects.listoftasks.R
 import uz.rdo.projects.listoftasks.databinding.FragmentAllBinding
 import uz.rdo.projects.listoftasks.databinding.FragmentInProgressBinding
 
+@AndroidEntryPoint
 class InProgressFragment : Fragment() {
 
     private var _binding: FragmentInProgressBinding? = null
