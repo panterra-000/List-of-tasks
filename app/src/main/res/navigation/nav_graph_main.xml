@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/allFragment">
+
+    <fragment
+        android:id="@+id/allFragment"
+        android:name="uz.rdo.projects.listoftasks.ui.fragments.alltasks.AllFragment"
+        android:label="fragment_all"
+        tools:layout="@layout/fragment_all" />
+    <fragment
+        android:id="@+id/completedTasksFragment"
+        android:name="uz.rdo.projects.listoftasks.ui.fragments.completedtasks.CompletedTasksFragment"
+        android:label="fragment_completed"
+        tools:layout="@layout/fragment_completed" />
+    <fragment
+        android:id="@+id/inProgressFragment"
+        android:name="uz.rdo.projects.listoftasks.ui.fragments.inprogresstasks.InProgressFragment"
+        android:label="fragment_in_progress"
+        tools:layout="@layout/fragment_in_progress" />
+</navigation>

@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/addressesFragment"
-        android:icon="@drawable/ic_all"
-        android:title="Addresses" />
+        android:id="@+id/allFragment"
+        android:icon="@drawable/ic_all_tasks"
+        android:title="all" />
 
 
     <item
-        android:id="@+id/mapFragment"
+        android:id="@+id/completedTasksFragment"
         android:icon="@drawable/ic_completed"
-        android:title="Map" />
+        android:title="completed" />
 
 
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/inProgressFragment"
         android:icon="@drawable/ic_inprogress"
-        android:title="Profile" />
+        android:title="in progress" />
 
 
 </menu>
