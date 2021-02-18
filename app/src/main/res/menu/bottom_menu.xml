@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/allFragment"
-        android:icon="@drawable/ic_all_tasks"
+        android:icon="@drawable/all_icon"
         android:title="all" />
 
 
     <item
         android:id="@+id/completedTasksFragment"
-        android:icon="@drawable/ic_completed"
+        android:icon="@drawable/done_icon"
         android:title="completed" />
 
 
     <item
         android:id="@+id/inProgressFragment"
-        android:icon="@drawable/ic_progress"
+        android:icon="@drawable/progress_icon"
         android:title="in progress" />
 
 

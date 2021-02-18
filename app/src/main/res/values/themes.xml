@@ -37,4 +37,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="desc_txt_style">
+        <item name="android:textColor">@color/main_color_green</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">@dimen/middle_txt_size</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>
