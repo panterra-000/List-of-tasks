@@ -3,15 +3,20 @@
 
     <color name="main_color">#3C5CCB</color>
     <color name="main_color2">#0C52DB</color>
-    <color name="main_color3">#A4A4E2</color>
+    <color name="main_color3">#BBBBF4</color>
+    <color name="main_color_green">#20ED42</color>
+    <color name="main_color_red">#ED1010</color>
+    <color name="main_txt_color">#102059</color>
+    <color name="main_while_color">#F1F1F1</color>
+
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
     <!--Bottom navigation menu-->
 
-    <color name="checkedIcon_color">#171929</color>
-    <color name="Icon_color">#FFFFFF</color>
+    <color name="checkedIcon_color">#FFFFFF</color>
+    <color name="Icon_color">#000000</color>
 
     <color name="start_color">#8897F8</color>
     <color name="center_color">#8594F4</color>
@@ -25,6 +30,10 @@
 
     <color name="color_inProgress">#DF2214</color>
     <color name="color_completed">#0E0ECA</color>
+
+    <!--Color all fragment-->
+    <color name="card_color">#FAFAFA</color>
+
 
 </resources>
 

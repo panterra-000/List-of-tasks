@@ -94,4 +94,11 @@ dependencies {
     implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar'
     implementation 'com.nineoldandroids:library:2.4.0'
 
+    /**
+     * ProgressBar
+     * **/
+    implementation 'com.budiyev.android:circular-progress-bar:1.2.2'
+
+    /**ProgressBar 2**/
+    implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
 }
