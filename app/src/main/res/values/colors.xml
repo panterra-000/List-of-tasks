@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="main_color">#3446C5</color>
-    <color name="main_color2">#3446C5</color>
-    <color name="main_color3">#3446C5</color>
+    <color name="main_color">#3C5CCB</color>
+    <color name="main_color2">#0C52DB</color>
+    <color name="main_color3">#A4A4E2</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
     <!--Bottom navigation menu-->
 
-    <color name="checkedIcon_color">#FFFFFF</color>
-    <color name="Icon_color">#171929</color>
+    <color name="checkedIcon_color">#171929</color>
+    <color name="Icon_color">#FFFFFF</color>
 
-    <color name="start_color">#3446C5</color>
-    <color name="center_color">#3446C5</color>
-    <color name="end_color">#3446C5</color>
+    <color name="start_color">#8897F8</color>
+    <color name="center_color">#8594F4</color>
+    <color name="end_color">#6B7CED</color>
 
 
     <!--BBBB-->
@@ -24,12 +23,16 @@
     <color name="colorPrimaryDark">#024265</color>
     <color name="colorAccent">#05af9b</color>
 
-    <color name="color_one">#fb7268</color>
-    <color name="color_white">#ededf2</color>
-    <color name="color_two">#E3E0E0</color>
-
-    <color name="inProgress_color">#FFA726</color>
-    <color name="completed_color">#66BB6A</color>
-    <color name="all">#EF5350</color>
+    <color name="color_inProgress">#DF2214</color>
+    <color name="color_completed">#0E0ECA</color>
 
 </resources>
+
+
+
+
+
+
+
+
+

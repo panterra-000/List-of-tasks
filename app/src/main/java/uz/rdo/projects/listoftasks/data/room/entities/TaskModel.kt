@@ -13,4 +13,5 @@ data class TaskModel(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
     var title: String
+
 ) : Serializable

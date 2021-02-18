@@ -1,9 +1,13 @@
 package uz.rdo.projects.listoftasks
 
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
+import org.eazegraph.lib.models.PieModel
 import uz.rdo.projects.listoftasks.databinding.ActivityMainBinding
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
@@ -17,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
