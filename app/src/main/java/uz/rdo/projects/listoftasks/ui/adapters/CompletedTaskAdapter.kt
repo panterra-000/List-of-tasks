@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import uz.rdo.projects.listoftasks.R
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
+import uz.rdo.projects.listoftasks.databinding.ComplTaskItemBinding
 import uz.rdo.projects.listoftasks.databinding.TaskItemBinding
 import kotlin.random.Random
 
-class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CALLBACK) {
+class CompletedTaskAdapter : ListAdapter<TaskModel, CompletedTaskAdapter.MyHolder>(DIFF_SEARCH_CALLBACK) {
 
     companion object {
         var DIFF_SEARCH_CALLBACK = object : DiffUtil.ItemCallback<TaskModel>() {
@@ -22,24 +23,15 @@ class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CAL
         }
     }
 
-    inner class MyHolder(private val binding: TaskItemBinding) :
+    inner class MyHolder(private val binding: ComplTaskItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind() {
-            val taskModel = getItem(adapterPosition)
-            binding.txtTaskTitle.text = taskModel.title
-            if (taskModel.status == "completed") {
-                binding.pbPercent.progress = 100
-                binding.iconStatus.setImageResource(R.drawable.done_image)
-            } else {
-                val random = Random(100)
-                binding.pbPercent.progress = random.nextInt()
-                binding.iconStatus.setImageResource(R.drawable.progress_image)
-            }
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder = MyHolder(
-        TaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ComplTaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) = holder.bind()

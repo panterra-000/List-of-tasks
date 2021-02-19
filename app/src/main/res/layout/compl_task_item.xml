@@ -18,45 +18,20 @@
 
         <ImageView
             android:id="@+id/icon_status"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/progress_image" />
+            app:srcCompat="@drawable/done_image" />
 
-
-        <ProgressBar
-            android:id="@+id/pb_percent"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="7dp"
-            android:layout_marginTop="10dp"
-            android:progress="30"
-            android:max="100"
-            android:progressDrawable="@drawable/back_progress"
-            app:layout_constraintEnd_toEndOf="@+id/icon_status"
-            app:layout_constraintStart_toStartOf="@+id/icon_status"
-            app:layout_constraintTop_toBottomOf="@+id/icon_status" />
-
-        <TextView
-            android:id="@+id/txt_percent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="20 %"
-            android:textColor="@color/main_color_red"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="@+id/pb_percent"
-            app:layout_constraintStart_toStartOf="@+id/pb_percent"
-            app:layout_constraintTop_toBottomOf="@+id/pb_percent" />
 
         <TextView
             android:id="@+id/txt_task_title"
             style="@style/main_txt_style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
             android:gravity="start"
@@ -75,11 +50,11 @@
             android:background="@drawable/back_desc"
             android:ellipsize="end"
             android:gravity="start"
-            android:maxLines="3"
+            android:maxLines="1"
             android:padding="10dp"
             android:text="Task one -  and awkdjn awndlakw lawkdnlw lakwdn alkwdn alwkd alwkd alkwdn alwkdn alwkd alwkdn alwkdnawd awdna,wmdn a aaw,ddescription"
             app:layout_constraintEnd_toEndOf="@+id/txt_task_title"
-            app:layout_constraintStart_toStartOf="@+id/txt_task_title"
+            app:layout_constraintStart_toStartOf="@+id/icon_status"
             app:layout_constraintTop_toBottomOf="@+id/txt_task_title" />
 
         <View
@@ -95,11 +70,12 @@
             android:id="@+id/txt_date_of_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/date_of"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txt_task_desc"
             app:layout_constraintTop_toBottomOf="@+id/txt_task_desc" />
 
         <TextView
@@ -111,34 +87,8 @@
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/txt_date_of_1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/txt_deadline_of_1"
+            app:layout_constraintStart_toEndOf="@+id/txt_date_of_1"
             app:layout_constraintTop_toTopOf="@+id/txt_date_of_1" />
-
-
-        <TextView
-            android:id="@+id/txt_deadline_of_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="@string/deadline"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_date_of_1" />
-
-        <TextView
-            android:id="@+id/txt_deadline_of"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12:36 pm, February 17, 2021"
-            android:textColor="@color/main_color_red"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/txt_deadline_of_1"
-            app:layout_constraintEnd_toEndOf="@+id/txt_date_of"
-            app:layout_constraintStart_toStartOf="@+id/txt_date_of"
-            app:layout_constraintTop_toTopOf="@+id/txt_deadline_of_1" />
 
 
         <ImageView

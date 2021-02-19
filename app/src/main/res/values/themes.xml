@@ -45,4 +45,14 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="item_title_txt_style">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">@dimen/main_txt_size</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
 </resources>

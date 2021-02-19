@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.hilt.android.AndroidEntryPoint
-import uz.rdo.projects.listoftasks.R
+import uz.rdo.projects.listoftasks.ui.MainActivity
 import uz.rdo.projects.listoftasks.databinding.FragmentAllBinding
 import uz.rdo.projects.listoftasks.databinding.FragmentInProgressBinding
 
@@ -29,6 +29,7 @@ class InProgressFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).changeToolBarMode(2)
     }
 
     override fun onDestroy() {

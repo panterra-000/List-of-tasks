@@ -6,4 +6,6 @@
     <string name="completed_tasks">Completed tasks</string>
     <string name="in_progress_tasks">In progress tasks</string>
     <string name="all_tasks_title">All Tasks</string>
+    <string name="date_of">Date of :</string>
+    <string name="deadline">Deadline :</string>
 </resources>

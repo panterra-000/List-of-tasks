@@ -12,6 +12,11 @@ import java.io.Serializable
 data class TaskModel(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
-    var title: String
+    var title: String,
+    var desc: String,
+    var completedPercent: Float,
+    var status: String,
+    var date: String,
+    var deadline: String
 
 ) : Serializable

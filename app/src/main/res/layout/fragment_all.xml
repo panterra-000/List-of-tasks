@@ -4,82 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="70dp"
     tools:context=".ui.fragments.alltasks.AllFragment">
-
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/main_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/img_toolbar_menu"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/ic_menu"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view" />
-
-    <TextView
-        android:id="@+id/txt_title_toolbar"
-        style="@style/main_txt_style"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_toStartOf="@+id/img_toolbar_add"
-        android:layout_toEndOf="@+id/img_toolbar_menu"
-        android:text="@string/all_tasks_title"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toStartOf="@+id/img_toolbar_add"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/img_toolbar_menu"
-        app:layout_constraintTop_toTopOf="@+id/view" />
-
-    <View
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@drawable/back_icon_plus"
-        app:layout_constraintBottom_toBottomOf="@+id/img_toolbar_add"
-        app:layout_constraintEnd_toEndOf="@+id/img_toolbar_add"
-        app:layout_constraintStart_toStartOf="@+id/img_toolbar_add"
-        app:layout_constraintTop_toTopOf="@+id/img_toolbar_add" />
-
-    <ImageView
-        android:id="@+id/img_toolbar_add"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:background="?selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="1dp"
-        android:src="@drawable/ic_add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_result"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:background="@color/card_color"
         android:elevation="10dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_toolbar_add">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -211,7 +150,6 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="10dp"
         android:id="@+id/rv_all_tasks"
         android:layout_width="match_parent"
         android:layout_height="0dp"
