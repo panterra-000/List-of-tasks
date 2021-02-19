@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="70dp"
     tools:context=".ui.fragments.alltasks.AllFragment">
 
 
@@ -35,7 +36,7 @@
         android:layout_centerInParent="true"
         android:layout_toStartOf="@+id/img_toolbar_add"
         android:layout_toEndOf="@+id/img_toolbar_menu"
-        android:text="All Tasks"
+        android:text="@string/all_tasks_title"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toStartOf="@+id/img_toolbar_add"
         app:layout_constraintHorizontal_bias="1.0"
@@ -209,29 +210,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:id="@+id/rv_all_tasks"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="30dp"
-        android:background="@color/card_color"
-        android:elevation="10dp"
-        app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cv_result">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_all_tasks"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/task_item"
-            />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@+id/cv_result"
+        tools:listitem="@layout/task_item" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

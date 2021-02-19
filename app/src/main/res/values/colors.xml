@@ -2,7 +2,7 @@
 <resources>
 
     <color name="main_color">#3C5CCB</color>
-    <color name="main_color2">#0C52DB</color>
+    <color name="main_color2">#5C90F8</color>
     <color name="main_color3">#BBBBF4</color>
     <color name="main_color_green">#20ED42</color>
     <color name="bottom_color_green">#63FA7C</color>
@@ -16,8 +16,8 @@
 
     <!--Bottom navigation menu-->
 
-    <color name="checkedIcon_color">#FFFFFF</color>
-    <color name="Icon_color">@color/main_txt_color</color>
+    <color name="checkedIcon_color">@color/main_color_green</color>
+    <color name="Icon_color">#2F4CAF</color>
 
     <color name="start_color">#8897F8</color>
     <color name="center_color">#8594F4</color>
