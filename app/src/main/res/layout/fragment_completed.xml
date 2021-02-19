@@ -117,5 +117,14 @@
     </androidx.cardview.widget.CardView>
 
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_comp_tasks"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:itemCount="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_result"
+        tools:listitem="@layout/compl_task_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

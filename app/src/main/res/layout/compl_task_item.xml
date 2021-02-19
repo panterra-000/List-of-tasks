@@ -67,28 +67,17 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/txt_date_of_1"
+            android:id="@+id/txt_date_of"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/date_of"
+            android:text="12:36 pm, January 17, 2020"
+            android:textColor="@color/main_txt_color"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/txt_task_desc"
             app:layout_constraintTop_toBottomOf="@+id/txt_task_desc" />
-
-        <TextView
-            android:id="@+id/txt_date_of"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12:36 pm, January 17, 2020"
-            android:textColor="@color/main_txt_color"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/txt_date_of_1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/txt_date_of_1"
-            app:layout_constraintTop_toTopOf="@+id/txt_date_of_1" />
 
 
         <ImageView
