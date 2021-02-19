@@ -75,7 +75,7 @@
             android:background="@drawable/back_desc"
             android:ellipsize="end"
             android:gravity="start"
-            android:maxLines="3"
+            android:maxLines="2"
             android:padding="10dp"
             android:text="Task one -  and awkdjn awndlakw lawkdnlw lakwdn alkwdn alwkd alwkd alkwdn alwkdn alwkd alwkdn alwkdnawd awdna,wmdn a aaw,ddescription"
             app:layout_constraintEnd_toEndOf="@+id/txt_task_title"
@@ -148,6 +148,9 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_more"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

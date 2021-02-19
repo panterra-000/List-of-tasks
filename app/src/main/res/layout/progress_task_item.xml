@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/main_while_color">
+        android:background="@color/main_while2_color">
 
         <ImageView
             android:id="@+id/icon_status"
@@ -24,7 +24,7 @@
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/done_image" />
+            app:srcCompat="@drawable/progress_image" />
 
 
         <TextView
@@ -47,12 +47,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/back_desc"
             android:ellipsize="end"
             android:gravity="start"
             android:maxLines="1"
             android:padding="10dp"
             android:text="Task one -  and awkdjn awndlakw lawkdnlw lakwdn alkwdn alwkd alwkd alkwdn alwkdn alwkd alwkdn alwkdnawd awdna,wmdn a aaw,ddescription"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/txt_task_title"
             app:layout_constraintStart_toStartOf="@+id/icon_status"
             app:layout_constraintTop_toBottomOf="@+id/txt_task_title" />
@@ -66,30 +68,45 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+
         <TextView
-            android:id="@+id/txt_date_of"
+            android:id="@+id/txt_day"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/back_days"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/middle_txt_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/img_more"
+            app:layout_constraintStart_toStartOf="@+id/img_more"
+            app:layout_constraintTop_toBottomOf="@+id/img_more" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="12:36 pm, January 17, 2020"
+            android:text="days"
             android:textColor="@color/main_txt_color"
-            android:textSize="12sp"
+            android:textSize="@dimen/min_txt_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/txt_task_desc"
-            app:layout_constraintTop_toBottomOf="@+id/txt_task_desc" />
-
+            app:layout_constraintEnd_toEndOf="@+id/txt_day"
+            app:layout_constraintStart_toStartOf="@+id/txt_day"
+            app:layout_constraintTop_toBottomOf="@+id/txt_day" />
 
         <ImageView
             android:id="@+id/img_more"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_more"
             android:background="?selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_more_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
