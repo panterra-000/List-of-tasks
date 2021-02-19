@@ -5,12 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import uz.rdo.projects.listoftasks.R
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
-import uz.rdo.projects.listoftasks.databinding.ComplTaskItemBinding
 import uz.rdo.projects.listoftasks.databinding.ProgressTaskItemBinding
-import uz.rdo.projects.listoftasks.databinding.TaskItemBinding
-import kotlin.random.Random
 
 class InProgressTaskAdapter :
     ListAdapter<TaskModel, InProgressTaskAdapter.MyHolder>(DIFF_SEARCH_CALLBACK) {

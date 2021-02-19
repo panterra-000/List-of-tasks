@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:padding="5dp"
+    app:cardCornerRadius="10dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_while_color"
+        android:padding="10dp">
+
+
+        <EditText
+            android:id="@+id/et_task_title"
+            style="@style/main_txt_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="start"
+            android:hint="@string/task_title"
+            android:maxLines="1"
+            android:textColor="@color/main_txt_color"
+            app:layout_constraintEnd_toStartOf="@+id/img_task"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_task_desc"
+            style="@style/desc_txt_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/back_desc"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:hint="@string/task_description"
+            android:maxLines="7"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/et_task_title"
+            app:layout_constraintStart_toStartOf="@+id/et_task_title"
+            app:layout_constraintTop_toBottomOf="@+id/et_task_title" />
+
+
+        <ImageView
+            android:id="@+id/img_task"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/app_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_set_date"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/calendar_icon"
+            app:layout_constraintStart_toStartOf="@+id/et_task_desc"
+            app:layout_constraintTop_toBottomOf="@+id/et_task_desc" />
+
+        <TextView
+            android:id="@+id/txt_deadline_of"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/date_time"
+            android:textColor="@color/main_color_red"
+            android:textSize="@dimen/main_txt_size"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_set_date"
+            app:layout_constraintStart_toEndOf="@+id/btn_set_date"
+            app:layout_constraintTop_toTopOf="@+id/btn_set_date" />
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/main_color_green"
+            android:text="@string/add"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_deadline_of" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/main_color_red"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_add"
+            app:layout_constraintEnd_toStartOf="@+id/btn_add"
+            app:layout_constraintTop_toTopOf="@+id/btn_add" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

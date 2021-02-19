@@ -125,6 +125,6 @@
         tools:itemCount="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cv_result"
-        tools:listitem="@layout/compl_task_item" />
+        tools:listitem="@layout/completed_task_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

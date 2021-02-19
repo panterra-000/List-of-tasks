@@ -7,6 +7,7 @@ import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import uz.rdo.projects.listoftasks.R
 import uz.rdo.projects.listoftasks.databinding.ActivityMainBinding
+import uz.rdo.projects.listoftasks.ui.dialogs.AddTaskDialog
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,10 @@ class MainActivity : AppCompatActivity() {
     private fun loadViews() {
         val navController = findNavController(R.id.fragment)
         binding.bottomMenuNav.setupWithNavController(navController)
+        binding.imgToolbarAdd.setOnClickListener {
+            val dialog = AddTaskDialog(this)
+            dialog.show()
+        }
     }
 
 

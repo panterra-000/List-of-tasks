@@ -5,11 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import uz.rdo.projects.listoftasks.R
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
-import uz.rdo.projects.listoftasks.databinding.ComplTaskItemBinding
-import uz.rdo.projects.listoftasks.databinding.TaskItemBinding
-import kotlin.random.Random
+import uz.rdo.projects.listoftasks.databinding.CompletedTaskItemBinding
 
 class CompletedTaskAdapter : ListAdapter<TaskModel, CompletedTaskAdapter.MyHolder>(DIFF_SEARCH_CALLBACK) {
 
@@ -23,7 +20,7 @@ class CompletedTaskAdapter : ListAdapter<TaskModel, CompletedTaskAdapter.MyHolde
         }
     }
 
-    inner class MyHolder(private val binding: ComplTaskItemBinding) :
+    inner class MyHolder(private val binding: CompletedTaskItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind() {
 
@@ -31,7 +28,7 @@ class CompletedTaskAdapter : ListAdapter<TaskModel, CompletedTaskAdapter.MyHolde
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder = MyHolder(
-        ComplTaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        CompletedTaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) = holder.bind()
