@@ -6,17 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import uz.rdo.projects.listoftasks.R
 import uz.rdo.projects.listoftasks.ui.mainactivity.MainActivity
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.FragmentAllBinding
 import uz.rdo.projects.listoftasks.ui.adapters.TaskAdapter
+import uz.rdo.projects.listoftasks.utils.extensions.showToast
 
 @AndroidEntryPoint
-class AllFragment : Fragment() {
+class AllTasksFragment : Fragment() {
 
     private val viewModel: AllTasksViewModel by viewModels()
     private var _binding: FragmentAllBinding? = null
@@ -40,15 +43,24 @@ class AllFragment : Fragment() {
         loadObservers()
         loadViews()
         loadMainCallBack()
+        setupAdapterCallBack()
     }
 
     @SuppressLint("FragmentLiveDataObserve")
     private fun loadObservers() {
         viewModel.allTasks.observe(this, allTasksObserver)
+        viewModel.delete.observe(this, deleteObserver)
+        // viewModel.updateToDone.observe()
     }
+
 
     private val allTasksObserver = Observer<List<TaskModel>> { taskModels ->
         adapter.submitList(taskModels)
+    }
+
+
+    private val deleteObserver = Observer<Boolean> {
+        showToast("успешно удален")
     }
 
 
@@ -56,18 +68,37 @@ class AllFragment : Fragment() {
         adapter.submitList(listOf())
         binding.rvAllTasks.layoutManager = LinearLayoutManager(requireContext())
         binding.rvAllTasks.adapter = adapter
+
+    }
+
+    private fun setupAdapterCallBack() {
+        adapter.setOnclickPopupMenuCallback { taskModel, i ->
+            when (i) {
+                R.id.pop_done -> {
+                    viewModel.updateTaskToDone(taskModel)
+                }
+                R.id.pop_edit -> {
+                    // TODO: 20.02.2021 """"""open edit_dialog ->
+
+                }
+                R.id.pop_delete -> {
+                    viewModel.deleteTask(taskModel)
+
+                }
+            }
+        }
     }
 
     private fun loadMainCallBack() {
         (requireActivity() as MainActivity).setAddTaskCallback {
-         viewModel.getAllTasks()
+            viewModel.getAllTasks()
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
+
 
 }

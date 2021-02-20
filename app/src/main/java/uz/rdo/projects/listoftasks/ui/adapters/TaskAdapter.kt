@@ -1,13 +1,20 @@
 package uz.rdo.projects.listoftasks.ui.adapters
 
+import android.os.Build
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import uz.rdo.projects.listoftasks.R
+import uz.rdo.projects.listoftasks.app.App
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.TaskItemBinding
+import uz.rdo.projects.listoftasks.utils.DoubleBlock
 import kotlin.random.Random
 
 class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CALLBACK) {
@@ -21,6 +28,17 @@ class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CAL
                 newItem.title == oldItem.title
         }
     }
+
+    lateinit var popupMenu: PopupMenu
+
+    private var listenClickPopupMenu: DoubleBlock<TaskModel, Int>? = null
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder = MyHolder(
+        TaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    )
+
+    override fun onBindViewHolder(holder: MyHolder, position: Int) = holder.bind()
 
     inner class MyHolder(private val binding: TaskItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -38,12 +56,29 @@ class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CAL
                 binding.pbPercent.progress = random.nextInt()
                 binding.iconStatus.setImageResource(R.drawable.progress_image)
             }
+
+            binding.imgMore.setOnClickListener {
+                showPopupMenu(getItem(adapterPosition), binding.imgMore)
+            }
+
+
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder = MyHolder(
-        TaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-    )
+    private fun showPopupMenu(selectedTaskModel: TaskModel, view: View) {
+        popupMenu = PopupMenu(App.instance, view)
+        popupMenu.inflate(R.menu.popup_menu)
+        popupMenu.setOnMenuItemClickListener {
+            listenClickPopupMenu?.invoke(selectedTaskModel, it.itemId)
 
-    override fun onBindViewHolder(holder: MyHolder, position: Int) = holder.bind()
+            true
+        }
+        popupMenu.show()
+
+    }
+
+    fun setOnclickPopupMenuCallback(f: DoubleBlock<TaskModel, Int>) {
+        listenClickPopupMenu = f
+    }
+
 }

@@ -14,4 +14,10 @@
     <string name="set_date">Set date</string>
     <string name="cancel">Cancel</string>
     <string name="date_time">DATE TIME</string>
+    <string name="all">all</string>
+    <string name="completed">completed</string>
+    <string name="in_progress">in progress</string>
+    <string name="edit">edit</string>
+    <string name="done">done</string>
+    <string name="delete">delete</string>
 </resources>

@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/allFragment"
-        android:name="uz.rdo.projects.listoftasks.ui.fragments.alltasks.AllFragment"
+        android:name="uz.rdo.projects.listoftasks.ui.fragments.alltasks.AllTasksFragment"
         android:label="fragment_all"
         tools:layout="@layout/fragment_all" />
     <fragment

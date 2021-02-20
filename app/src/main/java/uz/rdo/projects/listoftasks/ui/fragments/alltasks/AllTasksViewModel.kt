@@ -22,6 +22,9 @@ class AllTasksViewModel @ViewModelInject constructor(
     private val _delete = MutableLiveData<Boolean>()
     val delete: LiveData<Boolean> get() = _delete
 
+    private val _updateToDone = MutableLiveData<Boolean>()
+    val updateToDone: LiveData<Boolean> get() = updateToDone
+
 
     fun getAllTasks() {
         _allTasks.addSourceDisposable(repository.getAllTasks()) { resultData ->
@@ -33,4 +36,20 @@ class AllTasksViewModel @ViewModelInject constructor(
             }
         }
     }
+
+    fun deleteTask(taskModel: TaskModel) {
+        _allTasks.addSourceDisposable(repository.deleteTask(taskModel)) { resultData ->
+            resultData.onData { status ->
+                _delete.value = status
+                getAllTasks()
+            }.onMessage { message ->
+                _message.value = message
+            }
+        }
+    }
+
+    fun updateTaskToDone(taskModel: TaskModel) {
+
+    }
+
 }

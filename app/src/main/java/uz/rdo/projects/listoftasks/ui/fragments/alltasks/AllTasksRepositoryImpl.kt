@@ -14,6 +14,7 @@ import javax.inject.Inject
 class AllTasksRepositoryImpl @Inject constructor(
     private val dao: TaskModelDao
 ) : AllTasksRepository {
+
     override fun getAllTasks(): LiveData<ResultData<List<TaskModel>>> {
         val resultLiveData = MediatorLiveData<ResultData<List<TaskModel>>>()
         Coroutines.ioThenMain(
@@ -33,10 +34,30 @@ class AllTasksRepositoryImpl @Inject constructor(
     }
 
     override fun deleteTask(taskModel: TaskModel): LiveData<ResultData<Boolean>> {
-        TODO("Not yet implemented")
+        val resultLiveData = MutableLiveData<ResultData<Boolean>>()
+
+        Coroutines.ioThenMain(
+            { dao.delete(taskModel) },
+            { status ->
+                if (status != null)
+                    if (status > 0)
+                        resultLiveData.value = ResultData.data(true)
+                    else
+                        resultLiveData.value = ResultData.data(false)
+                else
+                    resultLiveData.value = ResultData.message("непредвиденная ошибка")
+            }
+        )
+        return resultLiveData
     }
 
     override fun updateTask(taskModel: TaskModel): LiveData<ResultData<Boolean>> {
         TODO("Not yet implemented")
     }
+
 }
+
+
+
+
+
