@@ -52,7 +52,20 @@ class AllTasksRepositoryImpl @Inject constructor(
     }
 
     override fun updateTask(taskModel: TaskModel): LiveData<ResultData<Boolean>> {
-        TODO("Not yet implemented")
+        val resultLiveData = MutableLiveData<ResultData<Boolean>>()
+        Coroutines.ioThenMain(
+            { dao.update(taskModel) },
+            { status ->
+                if (status != null)
+                    if (status > 0)
+                        resultLiveData.value = ResultData.data(true)
+                    else
+                        resultLiveData.value = ResultData.data(false)
+                else
+                    resultLiveData.value = ResultData.message("непредвиденная ошибка")
+            }
+        )
+        return resultLiveData
     }
 
 }

@@ -1,12 +1,9 @@
 package uz.rdo.projects.listoftasks.ui.adapters
 
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +12,6 @@ import uz.rdo.projects.listoftasks.app.App
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.TaskItemBinding
 import uz.rdo.projects.listoftasks.utils.DoubleBlock
-import kotlin.random.Random
 
 class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CALLBACK) {
 
@@ -48,20 +44,18 @@ class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CAL
             binding.txtTaskDesc.text = taskModel.desc
             binding.txtDateOf.text = taskModel.date
             binding.txtDeadlineOf.text = taskModel.deadline
+            binding.pbPercent.progress = taskModel.completedPercent.toInt()
+            binding.txtPercent.text = "${taskModel.completedPercent} %"
+
             if (taskModel.status == "completed") {
-                binding.pbPercent.progress = 100
                 binding.iconStatus.setImageResource(R.drawable.done_image)
             } else {
-                val random = Random(100)
-                binding.pbPercent.progress = random.nextInt()
                 binding.iconStatus.setImageResource(R.drawable.progress_image)
             }
 
             binding.imgMore.setOnClickListener {
                 showPopupMenu(getItem(adapterPosition), binding.imgMore)
             }
-
-
         }
     }
 
@@ -69,6 +63,8 @@ class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CAL
         popupMenu = PopupMenu(App.instance, view)
         popupMenu.inflate(R.menu.popup_menu)
         popupMenu.setOnMenuItemClickListener {
+            selectedTaskModel.status = "completed"
+            selectedTaskModel.completedPercent = 100F
             listenClickPopupMenu?.invoke(selectedTaskModel, it.itemId)
 
             true

@@ -50,7 +50,7 @@ class AllTasksFragment : Fragment() {
     private fun loadObservers() {
         viewModel.allTasks.observe(this, allTasksObserver)
         viewModel.delete.observe(this, deleteObserver)
-        // viewModel.updateToDone.observe()
+        viewModel.updateToDone.observe(this, updateObserver)
     }
 
 
@@ -60,9 +60,14 @@ class AllTasksFragment : Fragment() {
 
 
     private val deleteObserver = Observer<Boolean> {
-        showToast("успешно удален")
+        showToast("Успешно удален")
     }
 
+    private val updateObserver = Observer<Boolean> {
+        viewModel.getAllTasks()
+        showToast("Ок")
+
+    }
 
     private fun loadViews() {
         adapter.submitList(listOf())

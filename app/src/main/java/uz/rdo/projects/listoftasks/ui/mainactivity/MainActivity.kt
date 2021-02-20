@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             val dialog = AddTaskDialog(this)
             dialog.show()
             dialog.setOnclickSaveCallback { newTaskModel ->
-                viewModel.addPlaceModelToDB(newTaskModel)
+                viewModel.addTaskModelToDB(newTaskModel)
             }
         }
     }
