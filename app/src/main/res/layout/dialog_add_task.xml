@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_marginLeft="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
@@ -13,7 +13,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/main_while_color"
         android:padding="10dp">
 
@@ -60,43 +60,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/btn_set_date"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/calendar_icon"
-            app:layout_constraintStart_toStartOf="@+id/et_task_desc"
-            app:layout_constraintTop_toBottomOf="@+id/et_task_desc" />
-
-        <TextView
-            android:id="@+id/txt_deadline_of"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="@string/date_time"
-            android:textColor="@color/main_color_red"
-            android:textSize="@dimen/main_txt_size"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_set_date"
-            app:layout_constraintStart_toEndOf="@+id/btn_set_date"
-            app:layout_constraintTop_toTopOf="@+id/btn_set_date" />
-
         <Button
             android:id="@+id/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/main_color_green"
             android:text="@string/add"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_deadline_of" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
             android:id="@+id/btn_cancel"
@@ -110,6 +84,14 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_add"
             app:layout_constraintTop_toTopOf="@+id/btn_add" />
 
-
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_task_desc" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
