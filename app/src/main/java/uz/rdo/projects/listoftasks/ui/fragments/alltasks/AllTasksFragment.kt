@@ -16,6 +16,7 @@ import uz.rdo.projects.listoftasks.ui.mainactivity.MainActivity
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.FragmentAllBinding
 import uz.rdo.projects.listoftasks.ui.adapters.TaskAdapter
+import uz.rdo.projects.listoftasks.utils.extensions.format
 import uz.rdo.projects.listoftasks.utils.extensions.showToast
 
 @AndroidEntryPoint
@@ -56,6 +57,7 @@ class AllTasksFragment : Fragment() {
 
     private val allTasksObserver = Observer<List<TaskModel>> { taskModels ->
         adapter.submitList(taskModels)
+        setProgressBarAndNumbersTxtUI(taskModels)
     }
 
 
@@ -73,13 +75,15 @@ class AllTasksFragment : Fragment() {
         adapter.submitList(listOf())
         binding.rvAllTasks.layoutManager = LinearLayoutManager(requireContext())
         binding.rvAllTasks.adapter = adapter
-
+        binding.circularProgressBar.animate()
     }
 
     private fun setupAdapterCallBack() {
         adapter.setOnclickPopupMenuCallback { taskModel, i ->
             when (i) {
                 R.id.pop_done -> {
+                    taskModel.status = "completed"
+                    taskModel.completedPercent = 100F
                     viewModel.updateTaskToDone(taskModel)
                 }
                 R.id.pop_edit -> {
@@ -103,6 +107,35 @@ class AllTasksFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun setProgressBarAndNumbersTxtUI(tasks: List<TaskModel>) {
+        var progress: Float = 0.0F
+        var allTasksCount: Int = 0
+        var completedTaskCount: Int = 0
+        var inProgressTasksCount: Int = 0
+
+        for ((count, a) in tasks.withIndex()) {
+            if (a.completedPercent == 100F) {
+                completedTaskCount++
+            }
+            allTasksCount = count + 1
+        }
+
+        progress = (100F * completedTaskCount) / allTasksCount
+        inProgressTasksCount = allTasksCount - completedTaskCount
+
+        binding.circularProgressBar.progress = progress
+        binding.txtNumberAll.text = "$allTasksCount"
+        binding.txtNumberCompleted.text = "$completedTaskCount"
+        binding.txtNumberProgress.text = "$inProgressTasksCount"
+        binding.txtPercent.text = "${progress.format(1)}%"
+
+        if (allTasksCount == null) {
+            binding.txtPercent.text = "0.0%"
+            binding.circularProgressBar.progress = 0F
+        }
+
     }
 
 

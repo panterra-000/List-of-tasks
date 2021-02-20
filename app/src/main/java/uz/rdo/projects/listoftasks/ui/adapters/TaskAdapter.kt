@@ -63,8 +63,7 @@ class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CAL
         popupMenu = PopupMenu(App.instance, view)
         popupMenu.inflate(R.menu.popup_menu)
         popupMenu.setOnMenuItemClickListener {
-            selectedTaskModel.status = "completed"
-            selectedTaskModel.completedPercent = 100F
+
             listenClickPopupMenu?.invoke(selectedTaskModel, it.itemId)
 
             true

@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="0%"
                 android:textColor="@color/main_txt_color"
-                android:textSize="22dp"
+                android:textSize="@dimen/percent_size"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/circularProgressBar"
                 app:layout_constraintEnd_toEndOf="@+id/circularProgressBar"
@@ -109,7 +109,7 @@
             <TextView
                 android:id="@+id/txt_number_all"
                 style="@style/txt_style_num"
-                android:layout_width="wrap_content"
+                android:layout_width="8dp"
                 android:layout_height="wrap_content"
                 android:text="0"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_all_t"
