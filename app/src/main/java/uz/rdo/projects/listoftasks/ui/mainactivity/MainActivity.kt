@@ -3,12 +3,15 @@ package uz.rdo.projects.listoftasks.ui.mainactivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import uz.rdo.projects.listoftasks.R
+import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.ActivityMainBinding
 import uz.rdo.projects.listoftasks.ui.dialogs.AddTaskDialog
+import uz.rdo.projects.listoftasks.utils.EmptyBlock
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -18,12 +21,23 @@ class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding
         get() = _binding ?: throw NullPointerException("view is not available")
 
+    private var listenAddTaskClick: EmptyBlock? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        loadObservers()
         loadViews()
+    }
+
+    private fun loadObservers() {
+        viewModel.resultLiveData.observe(this, resultObserver)
+    }
+
+    private val resultObserver = Observer<Boolean> {
+        listenAddTaskClick?.invoke()
     }
 
     private fun loadViews() {
@@ -37,7 +51,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
     override fun onDestroy() {
@@ -57,6 +70,10 @@ class MainActivity : AppCompatActivity() {
                 binding.txtTitleToolbar.text = resources.getString(R.string.in_progress_tasks)
             }
         }
+    }
+
+    fun setAddTaskCallback(f: EmptyBlock) {
+        listenAddTaskClick = f
     }
 
 }

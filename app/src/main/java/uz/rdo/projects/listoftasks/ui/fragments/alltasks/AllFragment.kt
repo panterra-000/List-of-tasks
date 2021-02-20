@@ -39,6 +39,7 @@ class AllFragment : Fragment() {
         viewModel.getAllTasks()
         loadObservers()
         loadViews()
+        loadMainCallBack()
     }
 
     @SuppressLint("FragmentLiveDataObserve")
@@ -55,6 +56,12 @@ class AllFragment : Fragment() {
         adapter.submitList(listOf())
         binding.rvAllTasks.layoutManager = LinearLayoutManager(requireContext())
         binding.rvAllTasks.adapter = adapter
+    }
+
+    private fun loadMainCallBack() {
+        (requireActivity() as MainActivity).setAddTaskCallback {
+         viewModel.getAllTasks()
+        }
     }
 
 

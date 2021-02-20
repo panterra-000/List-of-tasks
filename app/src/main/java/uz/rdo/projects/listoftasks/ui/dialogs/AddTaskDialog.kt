@@ -37,7 +37,6 @@ class AddTaskDialog(private val activity: Activity) :
             }
 
             btnAdd.setOnClickListener {
-                // TODO: 19.02.2021
                 taskModel = TaskModel(
                     id = 0,
                     title = etTaskTitle.text.toString(),

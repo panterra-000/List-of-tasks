@@ -27,6 +27,9 @@ class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CAL
         fun bind() {
             val taskModel = getItem(adapterPosition)
             binding.txtTaskTitle.text = taskModel.title
+            binding.txtTaskDesc.text = taskModel.desc
+            binding.txtDateOf.text = taskModel.date
+            binding.txtDeadlineOf.text = taskModel.deadline
             if (taskModel.status == "completed") {
                 binding.pbPercent.progress = 100
                 binding.iconStatus.setImageResource(R.drawable.done_image)
