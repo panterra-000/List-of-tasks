@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
-import uz.rdo.projects.listoftasks.ui.MainActivity
+import uz.rdo.projects.listoftasks.ui.mainactivity.MainActivity
 import uz.rdo.projects.listoftasks.databinding.FragmentCompletedBinding
 import uz.rdo.projects.listoftasks.ui.adapters.CompletedTaskAdapter
-import uz.rdo.projects.listoftasks.ui.adapters.TaskAdapter
 
 @AndroidEntryPoint
 class CompletedTasksFragment : Fragment() {

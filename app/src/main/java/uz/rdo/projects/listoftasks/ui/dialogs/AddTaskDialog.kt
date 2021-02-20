@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.DialogAddTaskBinding
 import uz.rdo.projects.listoftasks.utils.SingleBlock
+import java.util.*
 
 class AddTaskDialog(private val activity: Activity) :
     AlertDialog(activity) {
@@ -15,6 +16,7 @@ class AddTaskDialog(private val activity: Activity) :
     private val binding: DialogAddTaskBinding
         get() = _binding ?: throw NullPointerException("View wasn't created")
 
+    private lateinit var taskModel: TaskModel
 
     private var editable: Boolean = false
 
@@ -36,9 +38,18 @@ class AddTaskDialog(private val activity: Activity) :
 
             btnAdd.setOnClickListener {
                 // TODO: 19.02.2021
+                taskModel = TaskModel(
+                    id = 0,
+                    title = etTaskTitle.text.toString(),
+                    desc = etTaskDesc.text.toString(),
+                    completedPercent = 0F,
+                    date = Calendar.getInstance().time.toString(),
+                    deadline = txtDeadlineOf.text.toString(),
+                    status = "in_progress"
+                )
+                listenClick?.invoke(taskModel)
                 dismiss()
             }
-
         }
     }
 

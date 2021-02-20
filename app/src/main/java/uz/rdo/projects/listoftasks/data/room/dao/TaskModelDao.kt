@@ -7,5 +7,5 @@ import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 @Dao
 interface TaskModelDao : BaseDao<TaskModel> {
     @Query("SELECT * FROM taskmodel")
-    fun getAllPlaceModels(): List<TaskModel>
+    fun getAllTaskModels(): List<TaskModel>
 }

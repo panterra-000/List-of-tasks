@@ -1,6 +1,7 @@
-package uz.rdo.projects.listoftasks.ui
+package uz.rdo.projects.listoftasks.ui.mainactivity
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -12,6 +13,7 @@ import uz.rdo.projects.listoftasks.ui.dialogs.AddTaskDialog
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    private val viewModel: MainViewModel by viewModels()
     private var _binding: ActivityMainBinding? = null
     private val binding: ActivityMainBinding
         get() = _binding ?: throw NullPointerException("view is not available")
@@ -30,8 +32,12 @@ class MainActivity : AppCompatActivity() {
         binding.imgToolbarAdd.setOnClickListener {
             val dialog = AddTaskDialog(this)
             dialog.show()
+            dialog.setOnclickSaveCallback { newTaskModel ->
+                viewModel.addPlaceModelToDB(newTaskModel)
+            }
         }
     }
+
 
 
     override fun onDestroy() {

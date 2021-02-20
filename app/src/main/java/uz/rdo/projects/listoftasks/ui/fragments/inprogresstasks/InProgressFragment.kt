@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
-import uz.rdo.projects.listoftasks.ui.MainActivity
-import uz.rdo.projects.listoftasks.databinding.FragmentAllBinding
+import uz.rdo.projects.listoftasks.ui.mainactivity.MainActivity
 import uz.rdo.projects.listoftasks.databinding.FragmentInProgressBinding
-import uz.rdo.projects.listoftasks.ui.adapters.CompletedTaskAdapter
 import uz.rdo.projects.listoftasks.ui.adapters.InProgressTaskAdapter
 
 @AndroidEntryPoint

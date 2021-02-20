@@ -5,7 +5,7 @@ import uz.rdo.projects.listoftasks.data.repositories.InProgressTasksRepository
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.utils.local.ResultData
 
-class InProgressTasksRepositoryImpl private constructor(): InProgressTasksRepository {
+class InProgressTasksRepositoryImpl private constructor() : InProgressTasksRepository {
     override fun getAllInPssTasks(): LiveData<ResultData<List<TaskModel>>> {
         TODO("Not yet implemented")
     }
@@ -18,7 +18,4 @@ class InProgressTasksRepositoryImpl private constructor(): InProgressTasksReposi
         TODO("Not yet implemented")
     }
 
-    override fun deleteAllInPssTasks(): LiveData<ResultData<Boolean>> {
-        TODO("Not yet implemented")
-    }
 }

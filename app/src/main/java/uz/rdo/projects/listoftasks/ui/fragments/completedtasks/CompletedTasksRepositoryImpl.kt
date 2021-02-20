@@ -17,8 +17,4 @@ class CompletedTasksRepositoryImpl:CompletedTasksRepository {
     override fun updateCompletedTask(taskModel: TaskModel): LiveData<ResultData<Boolean>> {
         TODO("Not yet implemented")
     }
-
-    override fun deleteAllCompletedTasks(): LiveData<ResultData<Boolean>> {
-        TODO("Not yet implemented")
-    }
 }

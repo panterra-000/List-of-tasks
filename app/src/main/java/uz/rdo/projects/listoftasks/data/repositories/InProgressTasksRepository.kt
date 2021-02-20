@@ -8,5 +8,4 @@ interface InProgressTasksRepository {
     fun getAllInPssTasks(): LiveData<ResultData<List<TaskModel>>>
     fun deleteInPssTask(taskModel: TaskModel): LiveData<ResultData<Boolean>>
     fun updateInPssTask(taskModel: TaskModel): LiveData<ResultData<Boolean>>
-    fun deleteAllInPssTasks(): LiveData<ResultData<Boolean>>
 }
