@@ -7,7 +7,6 @@ import uz.rdo.projects.listoftasks.data.repositories.AllTasksRepository
 import uz.rdo.projects.listoftasks.data.room.dao.TaskModelDao
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.utils.coroutines.Coroutines
-import uz.rdo.projects.listoftasks.utils.extensions.addSourceDisposable
 import uz.rdo.projects.listoftasks.utils.local.ResultData
 import javax.inject.Inject
 

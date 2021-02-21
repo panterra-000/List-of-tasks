@@ -2,10 +2,15 @@ package uz.rdo.projects.listoftasks.ui.fragments.completedtasks
 
 import androidx.lifecycle.LiveData
 import uz.rdo.projects.listoftasks.data.repositories.CompletedTasksRepository
+import uz.rdo.projects.listoftasks.data.room.dao.TaskModelDao
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.utils.local.ResultData
+import javax.inject.Inject
 
-class CompletedTasksRepositoryImpl:CompletedTasksRepository {
+class CompletedTasksRepositoryImpl @Inject constructor(
+    private val dao: TaskModelDao
+) : CompletedTasksRepository {
+
     override fun getAllCompletedTasks(): LiveData<ResultData<List<TaskModel>>> {
         TODO("Not yet implemented")
     }

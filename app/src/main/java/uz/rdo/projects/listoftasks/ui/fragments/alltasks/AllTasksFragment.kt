@@ -51,7 +51,7 @@ class AllTasksFragment : Fragment() {
     private fun loadObservers() {
         viewModel.allTasks.observe(this, allTasksObserver)
         viewModel.delete.observe(this, deleteObserver)
-        viewModel.updateToDone.observe(this, updateObserver)
+        viewModel.update.observe(this, updateObserver)
     }
 
 
@@ -84,7 +84,7 @@ class AllTasksFragment : Fragment() {
                 R.id.pop_done -> {
                     taskModel.status = "completed"
                     taskModel.completedPercent = 100F
-                    viewModel.updateTaskToDone(taskModel)
+                    viewModel.updateTask(taskModel)
                 }
                 R.id.pop_edit -> {
                     // TODO: 20.02.2021 """"""open edit_dialog ->
