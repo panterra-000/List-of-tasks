@@ -8,4 +8,7 @@ import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 interface TaskModelDao : BaseDao<TaskModel> {
     @Query("SELECT * FROM taskmodel")
     fun getAllTaskModels(): List<TaskModel>
+
+    @Query("SELECT * FROM taskmodel WHERE status ='completed'")
+    fun getCompletedTaskModels(): List<TaskModel>
 }

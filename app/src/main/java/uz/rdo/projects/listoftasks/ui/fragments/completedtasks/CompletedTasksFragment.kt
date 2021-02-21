@@ -1,19 +1,26 @@
 package uz.rdo.projects.listoftasks.ui.fragments.completedtasks
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.ui.mainactivity.MainActivity
 import uz.rdo.projects.listoftasks.databinding.FragmentCompletedBinding
 import uz.rdo.projects.listoftasks.ui.adapters.CompletedTaskAdapter
+import uz.rdo.projects.listoftasks.ui.fragments.alltasks.AllTasksViewModel
+import uz.rdo.projects.listoftasks.utils.extensions.showToast
 
 @AndroidEntryPoint
 class CompletedTasksFragment : Fragment() {
+
+    private val viewModel: CompletedTaskViewModel by viewModels()
 
     private var _binding: FragmentCompletedBinding? = null
     private val binding: FragmentCompletedBinding
@@ -21,6 +28,7 @@ class CompletedTasksFragment : Fragment() {
 
     private var adapter = CompletedTaskAdapter()
     private var list: ArrayList<TaskModel> = ArrayList()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,22 +41,35 @@ class CompletedTasksFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as MainActivity).changeToolBarMode(1)
+        viewModel.getAllCompletedTasks()
         loadViews()
+        loadObservers()
     }
 
     private fun loadViews() {
-        list.add(TaskModel(1, "Task-1",desc = "desc 1",status = "Xcompleted",completedPercent = 70F,date = "december, 12", deadline = "february,17"))
-        list.add(TaskModel(2, "Task-2",desc = "desc 2",status = "completed",completedPercent = 100F,date = "december, 12", deadline = "february,17"))
-        list.add(TaskModel(3, "Task-3",desc = "desc 3",status = "Xcompleted",completedPercent = 10F,date = "december, 12", deadline = "february,17"))
-        list.add(TaskModel(4, "Task-4",desc = "desc 4",status = "Xcompleted",completedPercent = 80F,date = "december, 12", deadline = "february,17"))
-        list.add(TaskModel(5, "Task-5",desc = "desc 5",status = "completed",completedPercent = 100F,date = "december, 12", deadline = "february,17"))
-        list.add(TaskModel(6, "Task-6",desc = "desc 6",status = "Xcompleted",completedPercent = 22F,date = "december, 12", deadline = "february,17"))
-        list.add(TaskModel(7, "Task-7",desc = "desc 7",status = "Xcompleted",completedPercent = 60F,date = "december, 12", deadline = "february,17"))
-
-        adapter.submitList(list)
-        binding.rvCompTasks.layoutManager = GridLayoutManager(requireContext(),2)
+        adapter.submitList(listOf())
+        binding.rvCompTasks.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvCompTasks.adapter = adapter
+    }
 
+    @SuppressLint("FragmentLiveDataObserve")
+    private fun loadObservers() {
+        viewModel.allCompletedTasks.observe(this, allCompletedTasksObserver)
+        viewModel.delete.observe(this, deleteObserver)
+        viewModel.update.observe(this, updateObserver)
+    }
+
+    private val allCompletedTasksObserver = Observer<List<TaskModel>> { taskModels ->
+        adapter.submitList(taskModels)
+    }
+
+    private val deleteObserver = Observer<Boolean> {
+        showToast("Успешно удален")
+    }
+
+    private val updateObserver = Observer<Boolean> {
+        viewModel.getAllCompletedTasks()
+        showToast("Ок")
     }
 
     override fun onDestroy() {

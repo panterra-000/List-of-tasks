@@ -47,7 +47,13 @@ class CompletedTaskViewModel @ViewModelInject() constructor(
         }
     }
 
-
-
-
+    fun updateTask(taskModel: TaskModel) {
+        _allCompletedTasks.addSourceDisposable(repository.updateCompletedTask(taskModel)) { resultData ->
+            resultData.onData { status ->
+                _update.value = status
+            }.onMessage { message ->
+                _message.value = message
+            }
+        }
+    }
 }
