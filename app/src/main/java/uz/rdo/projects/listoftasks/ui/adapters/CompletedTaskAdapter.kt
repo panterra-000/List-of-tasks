@@ -52,7 +52,7 @@ class CompletedTaskAdapter :
 
     private fun showPopupMenu(selectedTaskModel: TaskModel, view: View) {
         popupMenu = PopupMenu(App.instance, view)
-        popupMenu.inflate(R.menu.popup_menu)
+        popupMenu.inflate(R.menu.popup_menu_completed)
         popupMenu.setOnMenuItemClickListener {
             listenClickPopupMenu?.invoke(selectedTaskModel, it.itemId)
             true

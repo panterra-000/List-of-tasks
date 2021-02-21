@@ -10,11 +10,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import uz.rdo.projects.listoftasks.R
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.ui.mainactivity.MainActivity
 import uz.rdo.projects.listoftasks.databinding.FragmentCompletedBinding
 import uz.rdo.projects.listoftasks.ui.adapters.CompletedTaskAdapter
 import uz.rdo.projects.listoftasks.ui.fragments.alltasks.AllTasksViewModel
+import uz.rdo.projects.listoftasks.utils.extensions.format
 import uz.rdo.projects.listoftasks.utils.extensions.showToast
 
 @AndroidEntryPoint
@@ -41,9 +43,11 @@ class CompletedTasksFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as MainActivity).changeToolBarMode(1)
+        viewModel.getAllTasks()
         viewModel.getAllCompletedTasks()
         loadViews()
         loadObservers()
+        setupAdapterCallBack()
     }
 
     private fun loadViews() {
@@ -57,10 +61,16 @@ class CompletedTasksFragment : Fragment() {
         viewModel.allCompletedTasks.observe(this, allCompletedTasksObserver)
         viewModel.delete.observe(this, deleteObserver)
         viewModel.update.observe(this, updateObserver)
+        viewModel.allTasks.observe(this, getAllTasksObserver)
     }
+
 
     private val allCompletedTasksObserver = Observer<List<TaskModel>> { taskModels ->
         adapter.submitList(taskModels)
+    }
+
+    private val getAllTasksObserver = Observer<List<TaskModel>> { taskModels ->
+        setProgressBarAndNumbersTxtUI(taskModels)
     }
 
     private val deleteObserver = Observer<Boolean> {
@@ -71,6 +81,50 @@ class CompletedTasksFragment : Fragment() {
         viewModel.getAllCompletedTasks()
         showToast("Ок")
     }
+
+    private fun setupAdapterCallBack() {
+        adapter.setOnclickPopupMenuCallback { taskModel, i ->
+            when (i) {
+                R.id.pop_edit -> {
+                    // TODO: 20.02.2021 """"""open edit_dialog ->
+
+                }
+                R.id.pop_delete -> {
+                    viewModel.deleteTask(taskModel)
+                }
+            }
+        }
+    }
+
+
+    private fun setProgressBarAndNumbersTxtUI(tasks: List<TaskModel>) {
+        var progress: Float = 0.0F
+        var allTasksCount: Int = 0
+        var completedTaskCount: Int = 0
+        var inProgressTasksCount: Int = 0
+
+        for ((count, a) in tasks.withIndex()) {
+            if (a.completedPercent == 100F) {
+                completedTaskCount++
+            }
+            allTasksCount = count + 1
+        }
+
+        progress = (100F * completedTaskCount) / allTasksCount
+        inProgressTasksCount = allTasksCount - completedTaskCount
+
+        binding.circularProgressBar.progress = progress
+        binding.txtNumberAll.text = "$allTasksCount"
+        binding.txtNumberCompleted.text = "$completedTaskCount"
+        binding.txtPercent.text = "${progress.format(1)}%"
+
+        if (allTasksCount == null) {
+            binding.txtPercent.text = "0.0%"
+            binding.circularProgressBar.progress = 0F
+        }
+
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()

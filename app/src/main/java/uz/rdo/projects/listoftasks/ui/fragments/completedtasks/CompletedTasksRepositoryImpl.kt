@@ -32,6 +32,24 @@ class CompletedTasksRepositoryImpl @Inject constructor(
         return resultLiveData
     }
 
+    override fun getAllTasks(): LiveData<ResultData<List<TaskModel>>> {
+        val resultLiveData = MediatorLiveData<ResultData<List<TaskModel>>>()
+        Coroutines.ioThenMain(
+            { dao.getAllTaskModels() },
+            { list ->
+                if (list != null)
+                    if (list.isNotEmpty())
+                        resultLiveData.value = ResultData.data(list)
+                    else {
+                        resultLiveData.value = ResultData.data(listOf())
+                    }
+                else
+                    resultLiveData.value = ResultData.message("непредвиденная ошибка")
+            }
+        )
+        return resultLiveData
+    }
+
     override fun deleteCompletedTask(taskModel: TaskModel): LiveData<ResultData<Boolean>> {
         val resultLiveData = MutableLiveData<ResultData<Boolean>>()
 
