@@ -20,4 +20,7 @@
     <string name="edit">edit</string>
     <string name="done">done</string>
     <string name="delete">delete</string>
+    <string name="ok_edit">Ok,edit</string>
+    <string name="change_deadline_date">Change Deadline date :</string>
+    <string name="deadline_date">Deadline date :</string>
 </resources>

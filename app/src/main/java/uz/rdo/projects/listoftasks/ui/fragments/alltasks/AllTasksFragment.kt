@@ -16,6 +16,8 @@ import uz.rdo.projects.listoftasks.ui.mainactivity.MainActivity
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.FragmentAllBinding
 import uz.rdo.projects.listoftasks.ui.adapters.TaskAdapter
+import uz.rdo.projects.listoftasks.ui.dialogs.AddTaskDialog
+import uz.rdo.projects.listoftasks.ui.dialogs.EditTaskDialog
 import uz.rdo.projects.listoftasks.utils.extensions.format
 import uz.rdo.projects.listoftasks.utils.extensions.showToast
 
@@ -87,7 +89,7 @@ class AllTasksFragment : Fragment() {
                     viewModel.updateTask(taskModel)
                 }
                 R.id.pop_edit -> {
-                    // TODO: 20.02.2021 """"""open edit_dialog ->
+                    updateTaskWithDialog(taskModel)
 
                 }
                 R.id.pop_delete -> {
@@ -138,5 +140,13 @@ class AllTasksFragment : Fragment() {
 
     }
 
+    private fun updateTaskWithDialog(taskModel: TaskModel) {
+        val dialog = EditTaskDialog(requireActivity(), taskModel)
+        dialog.show()
+        dialog.setOnclickEditCallback { newTaskModel ->
+            viewModel.updateTask(newTaskModel)
+        }
+
+    }
 
 }

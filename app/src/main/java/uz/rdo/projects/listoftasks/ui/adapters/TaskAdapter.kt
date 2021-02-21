@@ -3,6 +3,7 @@ package uz.rdo.projects.listoftasks.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -61,11 +62,13 @@ class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CAL
 
     private fun showPopupMenu(selectedTaskModel: TaskModel, view: View) {
         popupMenu = PopupMenu(App.instance, view)
-        popupMenu.inflate(R.menu.popup_menu)
+        if (selectedTaskModel.status == "completed") {
+            popupMenu.inflate(R.menu.popup_menu_completed)
+        } else {
+            popupMenu.inflate(R.menu.popup_menu)
+        }
         popupMenu.setOnMenuItemClickListener {
-
             listenClickPopupMenu?.invoke(selectedTaskModel, it.itemId)
-
             true
         }
         popupMenu.show()
