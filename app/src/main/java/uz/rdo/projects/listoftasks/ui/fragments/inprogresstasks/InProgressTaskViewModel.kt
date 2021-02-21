@@ -68,6 +68,8 @@ class InProgressTaskViewModel @ViewModelInject() constructor(
         _allInProgressTasks.addSourceDisposable(repository.updateInProgressTask(taskModel)) { resultData ->
             resultData.onData { status ->
                 _update.value = status
+                getAllTasks()
+                getAllInProgressTasks()
             }.onMessage { message ->
                 _message.value = message
             }

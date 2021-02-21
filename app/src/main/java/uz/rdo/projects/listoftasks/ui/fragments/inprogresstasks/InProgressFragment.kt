@@ -108,7 +108,6 @@ class InProgressFragment : Fragment() {
             binding.txtPercent.text = "0.0%"
             binding.circularProgressBar.progress = 0F
         }
-
     }
 
     private fun setupAdapterCallBack() {
