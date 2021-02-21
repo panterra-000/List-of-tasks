@@ -84,7 +84,7 @@
                 app:layout_constraintTop_toTopOf="@+id/img_all_t" />
 
             <TextView
-                android:id="@+id/txt_number_completed"
+                android:id="@+id/txt_number_in_progress"
                 style="@style/txt_style_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:text="25"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_all_t"
-                app:layout_constraintStart_toStartOf="@+id/txt_number_completed"
+                app:layout_constraintStart_toStartOf="@+id/txt_number_in_progress"
                 app:layout_constraintTop_toTopOf="@+id/txt_all_t" />
 
             <TextView

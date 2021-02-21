@@ -12,4 +12,7 @@ interface TaskModelDao : BaseDao<TaskModel> {
     @Query("SELECT * FROM taskmodel WHERE status ='completed'")
     fun getCompletedTaskModels(): List<TaskModel>
 
+    @Query("SELECT * FROM taskmodel WHERE status ='in_progress'")
+    fun getInProgressTaskModels(): List<TaskModel>
+
 }

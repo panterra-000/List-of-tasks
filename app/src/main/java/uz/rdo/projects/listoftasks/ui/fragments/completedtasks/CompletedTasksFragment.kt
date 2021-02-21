@@ -30,8 +30,6 @@ class CompletedTasksFragment : Fragment() {
         get() = _binding ?: throw NullPointerException("view is not available")
 
     private var adapter = CompletedTaskAdapter()
-    private var list: ArrayList<TaskModel> = ArrayList()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,7 +78,6 @@ class CompletedTasksFragment : Fragment() {
 
     private val updateObserver = Observer<Boolean> {
         viewModel.getAllCompletedTasks()
-        showToast("Ок")
     }
 
     private fun setupAdapterCallBack() {

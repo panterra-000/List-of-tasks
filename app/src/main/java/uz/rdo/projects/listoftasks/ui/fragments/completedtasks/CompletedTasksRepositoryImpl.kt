@@ -52,7 +52,6 @@ class CompletedTasksRepositoryImpl @Inject constructor(
 
     override fun deleteCompletedTask(taskModel: TaskModel): LiveData<ResultData<Boolean>> {
         val resultLiveData = MutableLiveData<ResultData<Boolean>>()
-
         Coroutines.ioThenMain(
             { dao.delete(taskModel) },
             { status ->
