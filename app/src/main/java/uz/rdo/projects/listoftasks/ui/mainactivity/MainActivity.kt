@@ -1,34 +1,24 @@
 package uz.rdo.projects.listoftasks.ui.mainactivity
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.widget.PopupMenu
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.ContextThemeWrapper
-import androidx.appcompat.widget.AlertDialogLayout
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import uz.rdo.projects.listoftasks.R
 import uz.rdo.projects.listoftasks.app.App
-import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.ActivityMainBinding
 import uz.rdo.projects.listoftasks.ui.dialogs.AddTaskDialog
 import uz.rdo.projects.listoftasks.ui.dialogs.DeleteAllDialog
 import uz.rdo.projects.listoftasks.utils.EmptyBlock
-import java.util.*
+import uz.rdo.projects.listoftasks.utils.setLanguage
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    companion object {
-        public var dLocale: Locale? = null
-    }
-
 
     private val viewModel: MainViewModel by viewModels()
     private var _binding: ActivityMainBinding? = null
@@ -110,7 +100,7 @@ class MainActivity : AppCompatActivity() {
                         viewModel.deleteAllTasks()
                     }
                 }
-                R.id.popup_change_language -> {
+                R.id.popup_delete_completed -> {
 
                 }
             }
@@ -119,17 +109,6 @@ class MainActivity : AppCompatActivity() {
         popupMenu.show()
 
     }
-
-    fun updateConfig(wrapper: ContextThemeWrapper) {
-        if(dLocale==Locale("") ) // Do nothing if dLocale is null
-            return
-
-        Locale.setDefault(dLocale)
-        val configuration = Configuration()
-        configuration.setLocale(dLocale)
-        wrapper.applyOverrideConfiguration(configuration)
-    }
-
 
 }
 

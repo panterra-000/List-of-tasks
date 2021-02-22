@@ -19,8 +19,5 @@ class LocalStorage private constructor(context: Context) {
     private val pref: SharedPreferences =
         context.getSharedPreferences("LocalStorage", Context.MODE_PRIVATE)
 
-    var language: String by StringPreference(pref, "uz")
-    var langLocal: String by StringPreference(pref)
-
 
 }
