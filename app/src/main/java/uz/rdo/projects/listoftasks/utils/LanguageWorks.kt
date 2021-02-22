@@ -20,3 +20,5 @@ fun getLanguage(context: Context): String {
     }
     return change
 }
+
+/*change language ... */
