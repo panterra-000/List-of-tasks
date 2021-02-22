@@ -6,10 +6,14 @@ import android.view.View
  * Created by Davronbek Raximjanov on 17-Feb-21
  **/
 
-fun View.visible(){
+fun View.showV(){
     this.visibility = View.VISIBLE
 }
 
-fun View.gone(){
+fun View.hideV(){
     this.visibility = View.GONE
+}
+
+fun View.inVisible(){
+    this.visibility = View.INVISIBLE
 }

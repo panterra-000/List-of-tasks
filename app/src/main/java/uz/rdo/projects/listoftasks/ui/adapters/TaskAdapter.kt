@@ -13,6 +13,8 @@ import uz.rdo.projects.listoftasks.app.App
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.TaskItemBinding
 import uz.rdo.projects.listoftasks.utils.DoubleBlock
+import uz.rdo.projects.listoftasks.utils.extensions.hideV
+import uz.rdo.projects.listoftasks.utils.extensions.inVisible
 import uz.rdo.projects.listoftasks.utils.time.convertDateToLong
 import uz.rdo.projects.listoftasks.utils.time.convertLongToTime
 
@@ -21,10 +23,12 @@ class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CAL
     companion object {
         var DIFF_SEARCH_CALLBACK = object : DiffUtil.ItemCallback<TaskModel>() {
             override fun areItemsTheSame(oldItem: TaskModel, newItem: TaskModel) =
-                newItem.hashCode() == oldItem.hashCode()
+                newItem.id == oldItem.id
 
             override fun areContentsTheSame(oldItem: TaskModel, newItem: TaskModel) =
-                newItem.title == oldItem.title
+                newItem.title == oldItem.title && newItem.status == oldItem.status &&
+                        newItem.completedPercent == oldItem.completedPercent && newItem.desc == oldItem.desc
+
         }
     }
 
@@ -54,6 +58,10 @@ class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CAL
                 binding.iconStatus.setImageResource(R.drawable.done_image)
             } else {
                 binding.iconStatus.setImageResource(R.drawable.progress_image)
+            }
+
+            if (taskModel.desc.trim().isEmpty()) {
+                binding.txtTaskDesc.inVisible()
             }
 
             binding.imgMore.setOnClickListener {

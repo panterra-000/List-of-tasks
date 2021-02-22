@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/popup_delete_all"
+        android:icon="@drawable/all_icon"
+        android:title="@string/delete_all" />
+
+    <item
+        android:id="@+id/popup_change_language"
+        android:icon="@drawable/done_icon"
+        android:title="@string/change_language" />
+
+</menu>

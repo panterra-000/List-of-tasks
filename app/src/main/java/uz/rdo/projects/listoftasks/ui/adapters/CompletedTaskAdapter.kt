@@ -12,6 +12,7 @@ import uz.rdo.projects.listoftasks.app.App
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.CompletedTaskItemBinding
 import uz.rdo.projects.listoftasks.utils.DoubleBlock
+import uz.rdo.projects.listoftasks.utils.extensions.inVisible
 import uz.rdo.projects.listoftasks.utils.time.convertLongToTime
 
 class CompletedTaskAdapter :
@@ -38,7 +39,9 @@ class CompletedTaskAdapter :
             binding.txtTaskTitle.text = taskModel.title
             binding.txtTaskDesc.text = taskModel.desc
             binding.txtDateOf.text = convertLongToTime(taskModel.date)
-
+            if (taskModel.desc.trim().isEmpty()) {
+                binding.txtTaskDesc.inVisible()
+            }
             binding.imgMore.setOnClickListener {
                 showPopupMenu(getItem(adapterPosition), binding.imgMore)
             }

@@ -10,7 +10,19 @@ import javax.inject.Inject
 
 class MainRepositoryImpl @Inject constructor(
     private val dao: TaskModelDao
-):MainRepository {
+) : MainRepository {
+
+    override fun deleteAllTasks(): LiveData<Boolean> {
+        val resultLiveData = MutableLiveData<Boolean>()
+        Coroutines.ioThenMain(
+            { dao.deleteAllTasks() },
+            { status ->
+                if (status != null)
+                    resultLiveData.value = status > 0
+            }
+        )
+        return resultLiveData
+    }
 
     override fun insertTaskToDB(taskModel: TaskModel): LiveData<Boolean> {
         val resultLiveData = MutableLiveData<Boolean>()
@@ -23,5 +35,4 @@ class MainRepositoryImpl @Inject constructor(
         )
         return resultLiveData
     }
-
 }

@@ -9,9 +9,9 @@ import androidx.appcompat.app.AlertDialog
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.DialogUpdateTaskBinding
 import uz.rdo.projects.listoftasks.utils.SingleBlock
+import uz.rdo.projects.listoftasks.utils.time.convertLongToTime
 import uz.rdo.projects.listoftasks.utils.time.getCurrentDateTime
 import uz.rdo.projects.listoftasks.utils.time.getMilliseconds
-import uz.rdo.projects.listoftasks.utils.time.toMyString
 
 @RequiresApi(Build.VERSION_CODES.O)
 class EditTaskDialog(private val activity: Activity, private val taskModel: TaskModel) :
@@ -24,7 +24,6 @@ class EditTaskDialog(private val activity: Activity, private val taskModel: Task
     private var editable: Boolean = false
 
     private var listenClick: SingleBlock<TaskModel>? = null
-
 
     init {
         _binding = DialogUpdateTaskBinding.inflate(layoutInflater)
@@ -42,14 +41,9 @@ class EditTaskDialog(private val activity: Activity, private val taskModel: Task
 
             etTaskTitle.setText(taskModel.title)
             etTaskDesc.setText(taskModel.desc)
-            txtOldDeadline.text = "${taskModel.deadline}"
+            txtOldDeadline.text = "${convertLongToTime(taskModel.deadline)}"
 
             btnEdit.setOnClickListener {
-                var day = datePicker.dayOfMonth
-                var moth = datePicker.month
-                var year = datePicker.year
-
-                var deadlineDate = "$day/0${moth + 1}/$year"
 
                 var editedTaskModel = TaskModel(
                     id = taskModel.id,

@@ -14,13 +14,17 @@
     <string name="set_date">Set date</string>
     <string name="cancel">Cancel</string>
     <string name="date_time">DATE TIME</string>
-    <string name="all">all</string>
-    <string name="completed">completed</string>
-    <string name="in_progress">in progress</string>
-    <string name="edit">edit</string>
-    <string name="done">done</string>
-    <string name="delete">delete</string>
+    <string name="all">All</string>
+    <string name="completed">Completed</string>
+    <string name="in_progress">In progress</string>
+    <string name="edit">Edit</string>
+    <string name="done">Done</string>
+    <string name="delete">Delete</string>
     <string name="ok_edit">Ok,edit</string>
     <string name="change_deadline_date">Change Deadline date :</string>
     <string name="deadline_date">Deadline date :</string>
+    <string name="delete_all">Delete all</string>
+    <string name="change_language">Change language</string>
+    <string name="ok_delete">Ok, delete</string>
+    <string name="do_you_want_to_delete_all_tasks">Do you want to delete all tasks?</string>
 </resources>

@@ -58,7 +58,7 @@ class AllTasksFragment : Fragment() {
 
 
     private val allTasksObserver = Observer<List<TaskModel>> { taskModels ->
-        adapter.submitList(taskModels)
+        adapter.submitList(taskModels.toMutableList())
         setProgressBarAndNumbersTxtUI(taskModels)
     }
 

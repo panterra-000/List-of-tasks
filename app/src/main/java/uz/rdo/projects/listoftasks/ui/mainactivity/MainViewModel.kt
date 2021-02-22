@@ -15,9 +15,18 @@ class MainViewModel @ViewModelInject constructor(
     private val _resultLiveData = MediatorLiveData<Boolean>()
     val resultLiveData: LiveData<Boolean> get() = _resultLiveData
 
+    private val _deleteAllTasksData = MediatorLiveData<Boolean>()
+    val deleteAllTasksData: LiveData<Boolean> get() = _deleteAllTasksData
+
     fun addTaskModelToDB(taskModel: TaskModel) {
         _resultLiveData.addSourceDisposable(repository.insertTaskToDB(taskModel)) { isAdded ->
             _resultLiveData.value = isAdded
+        }
+    }
+
+    fun deleteAllTasks() {
+        _deleteAllTasksData.addSource(repository.deleteAllTasks()) { isAllDeleted ->
+            _deleteAllTasksData.value = isAllDeleted
         }
     }
 
