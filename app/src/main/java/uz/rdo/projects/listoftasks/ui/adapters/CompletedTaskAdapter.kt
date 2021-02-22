@@ -12,6 +12,7 @@ import uz.rdo.projects.listoftasks.app.App
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.CompletedTaskItemBinding
 import uz.rdo.projects.listoftasks.utils.DoubleBlock
+import uz.rdo.projects.listoftasks.utils.time.convertLongToTime
 
 class CompletedTaskAdapter :
     ListAdapter<TaskModel, CompletedTaskAdapter.MyHolder>(DIFF_SEARCH_CALLBACK) {
@@ -36,7 +37,7 @@ class CompletedTaskAdapter :
             val taskModel = getItem(adapterPosition)
             binding.txtTaskTitle.text = taskModel.title
             binding.txtTaskDesc.text = taskModel.desc
-            binding.txtDateOf.text = taskModel.date
+            binding.txtDateOf.text = convertLongToTime(taskModel.date)
 
             binding.imgMore.setOnClickListener {
                 showPopupMenu(getItem(adapterPosition), binding.imgMore)

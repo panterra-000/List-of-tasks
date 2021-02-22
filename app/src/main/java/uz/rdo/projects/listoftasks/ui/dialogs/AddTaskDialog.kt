@@ -10,6 +10,7 @@ import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.DialogAddTaskBinding
 import uz.rdo.projects.listoftasks.utils.SingleBlock
 import uz.rdo.projects.listoftasks.utils.time.getCurrentDateTime
+import uz.rdo.projects.listoftasks.utils.time.getMilliseconds
 import uz.rdo.projects.listoftasks.utils.time.toMyString
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -26,7 +27,6 @@ class AddTaskDialog(private val activity: Activity) :
 
     private var listenClick: SingleBlock<TaskModel>? = null
 
-
     init {
         _binding = DialogAddTaskBinding.inflate(layoutInflater)
         setView(binding.root)
@@ -41,12 +41,10 @@ class AddTaskDialog(private val activity: Activity) :
                 dismiss()
             }
 
-
             btnAdd.setOnClickListener {
                 var day = datePicker.dayOfMonth
                 var moth = datePicker.month
                 var year = datePicker.year
-
 
                 var deadlineDate = "$day/0${moth + 1}/$year"
 
@@ -55,8 +53,8 @@ class AddTaskDialog(private val activity: Activity) :
                     title = etTaskTitle.text.toString(),
                     desc = etTaskDesc.text.toString(),
                     completedPercent = 0F,
-                    date = getCurrentDateTime().toMyString(),
-                    deadline = deadlineDate,
+                    date = getCurrentDateTime(),
+                    deadline = datePicker.getMilliseconds(),
                     status = "in_progress"
                 )
 

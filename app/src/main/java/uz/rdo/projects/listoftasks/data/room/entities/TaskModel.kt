@@ -16,7 +16,7 @@ data class TaskModel(
     var desc: String,
     var completedPercent: Float,
     var status: String,
-    var date: String,
-    var deadline: String
+    var date: Long,
+    var deadline: Long
 
 ) : Serializable

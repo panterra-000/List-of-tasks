@@ -12,6 +12,7 @@ import uz.rdo.projects.listoftasks.app.App
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.ProgressTaskItemBinding
 import uz.rdo.projects.listoftasks.utils.DoubleBlock
+import uz.rdo.projects.listoftasks.utils.time.getInterValDays
 
 class InProgressTaskAdapter :
     ListAdapter<TaskModel, InProgressTaskAdapter.MyHolder>(DIFF_SEARCH_CALLBACK) {
@@ -35,7 +36,8 @@ class InProgressTaskAdapter :
             val taskModel = getItem(adapterPosition)
             binding.txtTaskTitle.text = taskModel.title
             binding.txtTaskDesc.text = taskModel.desc
-            binding.txtDay.text = "7"
+            val day: Long = getInterValDays(taskModel.deadline, taskModel.date)
+            binding.txtDay.text = "$day"
             binding.imgMore.setOnClickListener {
                 showPopupMenu(getItem(adapterPosition), binding.imgMore)
             }

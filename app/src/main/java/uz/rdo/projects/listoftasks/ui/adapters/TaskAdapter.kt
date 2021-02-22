@@ -13,6 +13,8 @@ import uz.rdo.projects.listoftasks.app.App
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel
 import uz.rdo.projects.listoftasks.databinding.TaskItemBinding
 import uz.rdo.projects.listoftasks.utils.DoubleBlock
+import uz.rdo.projects.listoftasks.utils.time.convertDateToLong
+import uz.rdo.projects.listoftasks.utils.time.convertLongToTime
 
 class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CALLBACK) {
 
@@ -43,8 +45,8 @@ class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CAL
             val taskModel = getItem(adapterPosition)
             binding.txtTaskTitle.text = taskModel.title
             binding.txtTaskDesc.text = taskModel.desc
-            binding.txtDateOf.text = taskModel.date
-            binding.txtDeadlineOf.text = taskModel.deadline
+            binding.txtDateOf.text = convertLongToTime(taskModel.date)
+            binding.txtDeadlineOf.text = convertLongToTime(taskModel.deadline)
             binding.pbPercent.progress = taskModel.completedPercent.toInt()
             binding.txtPercent.text = "${taskModel.completedPercent} %"
 
