@@ -55,10 +55,10 @@ class EditTaskDialog(private val activity: Activity, private val taskModel: Task
                     id = taskModel.id,
                     title = etTaskTitle.text.toString(),
                     desc = etTaskDesc.text.toString(),
-                    completedPercent = 0F,
+                    completedPercent = taskModel.completedPercent,
                     date = getCurrentDateTime().toMyString(),
                     deadline = deadlineDate,
-                    status = "in_progress"
+                    status = "${taskModel.status}"
                 )
 
                 listenClick?.invoke(editedTaskModel)

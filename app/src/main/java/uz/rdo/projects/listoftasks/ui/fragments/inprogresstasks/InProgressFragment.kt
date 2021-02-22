@@ -48,6 +48,7 @@ class InProgressFragment : Fragment() {
         loadViews()
         loadObservers()
         setupAdapterCallBack()
+        loadMainCallBack()
     }
 
     private fun loadViews() {
@@ -135,5 +136,12 @@ class InProgressFragment : Fragment() {
             viewModel.updateTask(newTaskModel)
         }
 
+    }
+
+    private fun loadMainCallBack() {
+        (requireActivity() as MainActivity).setAddTaskCallback {
+            viewModel.getAllInProgressTasks()
+            viewModel.getAllTasks()
+        }
     }
 }
