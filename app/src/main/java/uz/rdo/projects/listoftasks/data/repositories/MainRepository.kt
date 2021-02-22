@@ -6,5 +6,6 @@ import uz.rdo.projects.listoftasks.utils.local.ResultData
 
 interface MainRepository {
     fun deleteAllTasks(): LiveData<Boolean>
+    fun deleteCompletedTasks(): LiveData<Boolean>
     fun insertTaskToDB(taskModel: TaskModel): LiveData<Boolean>
 }

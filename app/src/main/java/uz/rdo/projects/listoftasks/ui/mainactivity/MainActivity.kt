@@ -15,7 +15,6 @@ import uz.rdo.projects.listoftasks.databinding.ActivityMainBinding
 import uz.rdo.projects.listoftasks.ui.dialogs.AddTaskDialog
 import uz.rdo.projects.listoftasks.ui.dialogs.DeleteAllDialog
 import uz.rdo.projects.listoftasks.utils.EmptyBlock
-import uz.rdo.projects.listoftasks.utils.setLanguage
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -38,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadObservers() {
         viewModel.resultLiveData.observe(this, resultObserver)
         viewModel.deleteAllTasksData.observe(this, deleteAllObserver)
+        viewModel.deleteCompletedTasksData.observe(this, deleteCompletedObserver)
     }
 
     private val resultObserver = Observer<Boolean> {
@@ -45,6 +45,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val deleteAllObserver = Observer<Boolean> {
+        listenAddTaskClick?.invoke()
+    }
+
+    private val deleteCompletedObserver = Observer<Boolean> {
         listenAddTaskClick?.invoke()
     }
 
@@ -101,7 +105,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 R.id.popup_delete_completed -> {
-
+                    viewModel.deleteCompletedTasks()
                 }
             }
             true

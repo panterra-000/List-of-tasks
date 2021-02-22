@@ -18,4 +18,8 @@ interface TaskModelDao : BaseDao<TaskModel> {
 
     @Query("DELETE FROM taskmodel")
     fun deleteAllTasks(): Int
+
+    @Query("DELETE FROM taskmodel where status = 'completed'")
+    fun deleteCompletedTasks(): Int
+
 }

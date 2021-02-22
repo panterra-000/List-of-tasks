@@ -24,6 +24,18 @@ class MainRepositoryImpl @Inject constructor(
         return resultLiveData
     }
 
+    override fun deleteCompletedTasks(): LiveData<Boolean> {
+        val resultLiveData = MutableLiveData<Boolean>()
+        Coroutines.ioThenMain(
+            { dao.deleteCompletedTasks() },
+            { status ->
+                if (status != null)
+                    resultLiveData.value = status > 0
+            }
+        )
+        return resultLiveData
+    }
+
     override fun insertTaskToDB(taskModel: TaskModel): LiveData<Boolean> {
         val resultLiveData = MutableLiveData<Boolean>()
         Coroutines.ioThenMain(
