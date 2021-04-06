@@ -53,6 +53,12 @@
         <item name="android:textSize">@dimen/main_txt_size</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="Theme.ListOfTasks.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.ListOfTasks.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.ListOfTasks.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

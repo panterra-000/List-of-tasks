@@ -10,6 +10,7 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.ListOfTasks">
+
         <activity
             android:name=".ui.mainactivity.MainActivity"
             android:screenOrientation="portrait">

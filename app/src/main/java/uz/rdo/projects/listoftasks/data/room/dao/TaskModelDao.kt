@@ -1,6 +1,5 @@
 package uz.rdo.projects.listoftasks.data.room.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import uz.rdo.projects.listoftasks.data.room.entities.TaskModel

@@ -47,8 +47,8 @@ class TaskAdapter : ListAdapter<TaskModel, TaskAdapter.MyHolder>(DIFF_SEARCH_CAL
         RecyclerView.ViewHolder(binding.root) {
         fun bind() {
             val taskModel = getItem(adapterPosition)
-            binding.txtTaskTitle.text = taskModel.title
-            binding.txtTaskDesc.text = taskModel.desc
+            binding.txtTaskTitle.text = taskModel.title.trim()
+            binding.txtTaskDesc.text = taskModel.desc.trim()
             binding.txtDateOf.text = convertLongToTime(taskModel.date)
             binding.txtDeadlineOf.text = convertLongToTime(taskModel.deadline)
             binding.pbPercent.progress = taskModel.completedPercent.toInt()
